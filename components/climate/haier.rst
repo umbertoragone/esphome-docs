@@ -72,40 +72,40 @@ This component requires a :ref:`uart` to be setup.
           max_temperature: 30 °C
           temperature_step: 1 °C
         supported_modes:
-        - 'OFF'
-        - HEAT_COOL
-        - COOL
-        - HEAT
-        - DRY
-        - FAN_ONLY
+          - 'OFF'
+          - HEAT_COOL
+          - COOL
+          - HEAT
+          - DRY
+          - FAN_ONLY
         supported_swing_modes:
-        - 'OFF'
-        - VERTICAL
-        - HORIZONTAL
-        - BOTH
-      supported_presets:
-        - AWAY
-        - ECO
-        - BOOST
-        - SLEEP
-      on_alarm_start:
-        then:
-          - logger.log:
-              level: WARN
-              format: "Alarm activated. Code: %d. Message: \"%s\""
-              args: [ code, message]
-      on_alarm_end:
-        then:
-          - logger.log:
-              level: INFO
-              format: "Alarm deactivated. Code: %d. Message: \"%s\""
-              args: [ code, message]
-      on_status_message:
-        then:
-          - logger.log:
-              level: INFO
-              format: "New status message received, size=%d, subcmd=%02X%02X"
-              args: [ 'data_size', 'data[0]', 'data[1]' ]
+          - 'OFF'
+          - VERTICAL
+          - HORIZONTAL
+          - BOTH
+        supported_presets:
+          - AWAY
+          - ECO
+          - BOOST
+          - SLEEP
+        on_alarm_start:
+          then:
+            - logger.log:
+                level: WARN
+                format: "Alarm activated. Code: %d. Message: \"%s\""
+                args: [ code, message]
+        on_alarm_end:
+          then:
+            - logger.log:
+                level: INFO
+                format: "Alarm deactivated. Code: %d. Message: \"%s\""
+                args: [ code, message]
+        on_status_message:
+          then:
+            - logger.log:
+                level: INFO
+                format: "New status message received, size=%d, subcmd=%02X%02X"
+                args: [ 'data_size', 'data[0]', 'data[1]' ]
 
 
 Configuration variables:
